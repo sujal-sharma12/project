@@ -27,10 +27,11 @@ urlpatterns = [
     path('Contact/', views.ContactPage,name="ContactPage"),
     path('About/', views.AboutPage,name="AboutPage"),
     path('Myaccount/', views.AccountPage,name="AccountPage"),
-    path('Mycart/', views.CartPage,name="CartPage"),
+    path('Cart/', views.CartPage,name="CartPage"),
     path('Chekout/', views.CheckoutPage,name="ChekoutPage"),
     path('ChangePass/', views.ForgotPage,name="ChangePass"),
-     path('Product/', views.Productpage,name="Productpage"),
+    path('Product/', views.PRODUCT,name="Productpage"),
+    path('Details/<str:id>', views.DetailsPage,name="DetailsPage"),
 ]
 
 

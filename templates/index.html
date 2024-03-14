@@ -9,23 +9,23 @@
                     <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
                         <!-- Item 1 -->
                         <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                            <img src="/static/assets/images/logo/img9.webp"
+                            <img src="/static/assets/images/logo/sams.webp"
                                 class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
                         </div>
                         <!-- Item 2 -->
                         <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                            <img src="/static/assets/images/logo/img10.webp"
+                            <img src="/static/assets/images/logo/sony.webp"
                                 class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
                         </div>
                         <!-- Item 3 -->
                         <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                            <img src="/static/assets/images/logo/img11.webp"
+                            <img src="/static/assets/images/logo/whor.webp"
                                 class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
                         </div>
                         <!-- For The Add MOre Items in Slide Bar  -->
                         <!-- Item 5 -->
                         <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                            <img src="/static/assets/images/logo/img2.webp"
+                            <img src="/static/assets/images/logo/4k.webp"
                                 class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
                         </div>
                     </div>
@@ -130,14 +130,14 @@
                                                 <span class="new">New</span>
                                             </span>
                                             <div class="thumb">
-                                                <a href="single-product.html" class="image">
+                                                <a href="/Details/{{prod.id}}" class="image">
                                                     <img src="/media/{{prod.image}}" alt="Product" />
                                                     <!-- <img class="hover-image" src="/static/assets/images/product-image/1.webp" alt="Product" /> -->
                                                 </a>
                                             </div>
                                             <div class="content">
-                                                <span class="category"><a href="#">{{prod.categories}}</a></span>
-                                                <h5 class="title"><a href="single-product.html">{{prod.name | truncatewords:4}}
+                                                <span class="category"><a href="/Details/{{prod.id}}">{{prod.categories}}</a></span>
+                                                <h5 class="title"><a href="/Details/{{prod.id}}">{{prod.name | truncatewords:4}}
                                                     </a>
                                                 </h5>
                                                 <span class="price">
@@ -145,10 +145,10 @@
                                                 </span>
                                             </div>
                                             <div class="actions">
-                                                <button title="Add To Cart" class="action add-to-cart" data-bs-toggle="modal" data-bs-target="#exampleModal-Cart"><i
+                                                <button title="Add To Cart" class="action add-to-cart" data-bs-toggle="modal" data-bs-target="#exampleModal-Cart-{{forloop.counter}}"><i
                                                     class="pe-7s-shopbag"></i></button>
                                                 
-                                                <button class="action quickview" data-link-action="quickview" title="Quick view" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="pe-7s-look"></i></button>
+                                                <button class="action quickview" data-link-action="quickview" title="Quick view" data-bs-toggle="modal" data-bs-target="#exampleModal-{{forloop.counter}}"><i class="pe-7s-look"></i></button>
                                             </div>
                                      </div>
                                   </div> 
