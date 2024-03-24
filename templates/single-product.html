@@ -10,13 +10,15 @@
                         <!-- Swiper -->
                         <div class="swiper-container zoom-top">
                             <div class="swiper-wrapper">
-                               
+                                {% for i in prod.images_set.all %}
                                 <div class="swiper-slide">
-                                    <img class="img-responsive m-auto" src="/media/{{prod.image}}" alt="">
-                                    <a class="venobox full-preview" data-gall="myGallery" href="/media/{{prod.image}}">
+                                    <img class="img-responsive m-auto" src="/media/{{i.image}}" alt="">
+                                    <a class="venobox full-preview" data-gall="myGallery" href="/media/{{i.image}}">
+                                        
                                         <i class="fa fa-arrows-alt" aria-hidden="true"></i>
                                     </a>
                                 </div>
+                                {% endfor %}
                             </div>
                         </div>
                         <div class="swiper-container mt-20px zoom-thumbs slider-nav-style-1 small-nav">
@@ -71,19 +73,11 @@
                             </div>
                             
                             <div class="pro-details-quality">
-                                <div class="cart-plus-minus">
-                                    <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1" />
-                                </div>
+                                
                                 <div class="pro-details-cart">
-                                    <button class="add-cart"> Add To
-                                        Cart</button>
+                                    <a href="{% url 'cart_add' prod.id %}" class="add-cart">Add To Cart</a>   
                                 </div>
-                                <div class="pro-details-compare-wishlist pro-details-wishlist ">
-                                    <a href="wishlist.html"><i class="pe-7s-like"></i></a>
-                                </div>
-                                <div class="pro-details-compare-wishlist pro-details-wishlist ">
-                                    <a href="compare.html"><i class="pe-7s-refresh-2"></i></a>
-                                </div>
+                                
                             </div>
                         </div>
                         <!-- product details description area start -->

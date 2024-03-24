@@ -1,21 +1,9 @@
 {% include "header.html" %}
-        <!-- breadcrumb-area start -->
-        <div class="breadcrumb-area">
-            <div class="container">
-                <div class="row align-items-center justify-content-center">
-                    <div class="col-12 text-center">
-                        <h2 class="breadcrumb-title">Checkout</h2>
-                        <!-- breadcrumb-list start -->
-                        <ul class="breadcrumb-list">
-                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                            <li class="breadcrumb-item active">Checkout</li>
-                        </ul>
-                        <!-- breadcrumb-list end -->
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- breadcrumb-area end -->
+
+{% load cart_tag %}
+
+    <form method="post" action="/placeorder/ " >
+        {% csrf_token %}
         <!-- checkout area start -->
         <div class="checkout-area pt-100px pb-100px">
             <div class="container">
@@ -27,164 +15,83 @@
                                 <div class="col-lg-6 col-md-6">
                                     <div class="billing-info mb-4">
                                         <label>First Name</label>
-                                        <input type="text" />
+                                        <input type="text" name="firstname" id="firstname" value="{{request.user.first_name}}" />
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6">
                                     <div class="billing-info mb-4">
                                         <label>Last Name</label>
-                                        <input type="text" />
+                                        <input type="text" value="{{request.user.last_name}}" name="lastname" id="lastname" />
                                     </div>
                                 </div>
-                                <div class="col-lg-12">
+
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="billing-info mb-4">
+                                        <label>Date of Birth</label>
+                                        <input type="date" id="dob" name="dob" min="1906-01-01" max="2004-12-31" name="dob" itemid="dob" required>
+                                    </div>
+                                </div>
+                                <!-- <div class="col-lg-12">
                                     <div class="billing-info mb-4">
                                         <label>Company Name</label>
                                         <input type="text" />
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="col-lg-12">
                                     <div class="billing-select mb-4">
-                                        <label>Country</label>
-                                        <select>
-                                            <option>Select a country</option>
-                                            <option>Azerbaijan</option>
-                                            <option>Bahamas</option>
-                                            <option>Bahrain</option>
+                                        <label>State</label>
+                                        <select name="state" id="state">
+                                            <option>Gujarat</option>
+                                            <option>Rajeshtan</option>
+                                            <option>patan</option>
+                                            <!-- <option>Brazil</option>
                                             <option>Bangladesh</option>
-                                            <option>Barbados</option>
+                                            <option>Barbados</option> -->
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="billing-info mb-4">
                                         <label>Street Address</label>
-                                        <input class="billing-address" placeholder="House number and street name" type="text" />
-                                        <input placeholder="Apartment, suite, unit etc." type="text" />
+                                        <!-- <input class="billing-address" placeholder="House number and street name" type="text" />
+                                        <input placeholder="Apartment, suite, unit etc." type="text" /> -->
+                                        <textarea name="address" id="address">{{profile.address}}</textarea>
                                     </div>
                                 </div>
-                                <div class="col-lg-12">
-                                    <div class="billing-info mb-4">
+                               
+                                <div class="col-lg-6">
+                                    <div class="billing-select mb-4">
                                         <label>Town / City</label>
-                                        <input type="text" />
+                                        <select name="city" id="city">
+                                            <option>Ahmedabad</option>
+                                            <option>Gandhinagar</option>
+                                            <option>Vadodra</option>
+                                            <option>Surat</option>
+                                            <!-- <option></option>
+                                            <option>Barbados</option> -->
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6">
                                     <div class="billing-info mb-4">
-                                        <label>State / County</label>
-                                        <input type="text" />
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-md-6">
-                                    <div class="billing-info mb-4">
-                                        <label>Postcode / ZIP</label>
-                                        <input type="text" />
+                                        <label>PinCode</label>
+                                        <input type="text" name="pincode" id="pincode" />
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6">
                                     <div class="billing-info mb-4">
                                         <label>Phone</label>
-                                        <input type="text" />
+                                        <input type="text" value="{{profile.contact}}" name="phone" id="phone"/>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6">
                                     <div class="billing-info mb-4">
                                         <label>Email Address</label>
-                                        <input type="text" />
+                                        <input type="text" value="{{request.user.email}}" name="email" id="email" />
                                     </div>
                                 </div>
                             </div>
-                            <div class="checkout-account mb-30px">
-                                <input class="checkout-toggle2 w-auto h-auto" type="checkbox" />
-                                <label>Create an account?</label>
-                            </div>
-                            <div class="checkout-account-toggle open-toggle2 mb-30">
-                                <input placeholder="Email address" type="email" />
-                                <input placeholder="Password" type="password" />
-                                <button class="btn-hover checkout-btn" type="submit">register</button>
-                            </div>
-                            <div class="additional-info-wrap">
-                                <h4>Additional information</h4>
-                                <div class="additional-info">
-                                    <label>Order notes</label>
-                                    <textarea placeholder="Notes about your order, e.g. special notes for delivery. " name="message"></textarea>
-                                </div>
-                            </div>
-                            <div class="checkout-account mt-25">
-                                <input class="checkout-toggle w-auto h-auto" type="checkbox" />
-                                <label>Ship to a different address?</label>
-                            </div>
-                            <div class="different-address open-toggle mt-30px">
-                                <div class="row">
-                                    <div class="col-lg-6 col-md-6">
-                                        <div class="billing-info mb-4">
-                                            <label>First Name</label>
-                                            <input type="text" />
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6">
-                                        <div class="billing-info mb-4">
-                                            <label>Last Name</label>
-                                            <input type="text" />
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="billing-info mb-4">
-                                            <label>Company Name</label>
-                                            <input type="text" />
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="billing-select mb-4">
-                                            <label>Country</label>
-                                            <select>
-                                                <option>Select a country</option>
-                                                <option>Azerbaijan</option>
-                                                <option>Bahamas</option>
-                                                <option>Bahrain</option>
-                                                <option>Bangladesh</option>
-                                                <option>Barbados</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="billing-info mb-4">
-                                            <label>Street Address</label>
-                                            <input class="billing-address" placeholder="House number and street name" type="text" />
-                                            <input placeholder="Apartment, suite, unit etc." type="text" />
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="billing-info mb-4">
-                                            <label>Town / City</label>
-                                            <input type="text" />
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6">
-                                        <div class="billing-info mb-4">
-                                            <label>State / County</label>
-                                            <input type="text" />
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6">
-                                        <div class="billing-info mb-4">
-                                            <label>Postcode / ZIP</label>
-                                            <input type="text" />
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6">
-                                        <div class="billing-info mb-4">
-                                            <label>Phone</label>
-                                            <input type="text" />
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6">
-                                        <div class="billing-info mb-4">
-                                            <label>Email Address</label>
-                                            <input type="text" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                           
                         </div>
                     </div>
                     <div class="col-lg-5 mt-md-30px mt-lm-30px ">
@@ -199,12 +106,12 @@
                                         </ul>
                                     </div>
                                     <div class="your-order-middle">
+                                        {% for key, value in request.session.cart.items %}
                                         <ul>
-                                            <li><span class="order-middle-left">Product Name X 1</span> <span
-                                                class="order-price">$100 </span></li>
-                                            <li><span class="order-middle-left">Product Name X 1</span> <span
-                                                class="order-price">$100 </span></li>
+                                            <li><span class="order-middle-left">{{value.name| truncatewords:5}} X {{value.quantity}}</span> <span
+                                                class="order-price">₹{{ value.price|multiply:value.quantity }} </span></li>
                                         </ul>
+                                        {% endfor %}
                                     </div>
                                     <div class="your-order-bottom">
                                         <ul>
@@ -215,7 +122,7 @@
                                     <div class="your-order-total">
                                         <ul>
                                             <li class="order-total">Total</li>
-                                            <li>$100</li>
+                                            <li>₹ {{cart_total_amount}}</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -261,12 +168,13 @@
                                 </div>
                             </div>
                             <div class="Place-order mt-25">
-                                <a class="btn-hover" href="#">Place Order</a>
+                                <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Place Order</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </form>
         <!-- checkout area end -->
         {% include "footer.html" %}

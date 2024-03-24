@@ -38,8 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'store',
+    'cart',
 ]
 
+
+CART_SESSION_ID = 'cart'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -63,6 +66,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'cart.context_processor.cart_total_amount'
             ],
         },
     },
@@ -88,7 +92,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'ah',
         'USER': 'root',
-        'PASSWORD': 'Jayu@123',
+        'PASSWORD': '',
         'HOST': 'localhost',   
         'PORT': '3306',        
     }
@@ -143,3 +147,10 @@ STATICFILES_DIRS = [
 
 MEDIA_ROOT=BASE_DIR /"media"
 MEDIA_URL="/media/"
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'sp5465437@gmail.com'
+EMAIL_HOST_PASSWORD = 'gampeosmdrbyxvoz'

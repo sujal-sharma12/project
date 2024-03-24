@@ -1,0 +1,86 @@
+{% include "header.html" %}
+<!-- breadcrumb-area start -->
+<!-- <div class="breadcrumb-area">
+    <div class="container">
+        <div class="row align-items-center justify-content-center">
+            <div class="col-12 text-center">
+                <h2 class="breadcrumb-title">My Profile</h2>
+                breadcrumb-list start -->
+                <!-- <ul class="breadcrumb-list">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item active">Account</li>
+                </ul> -->
+                <!-- breadcrumb-list end -->
+            <!-- </div>
+        </div>
+    </div>
+</div> -->
+<!-- breadcrumb-area end -->
+<!-- account area start -->
+<div class="account-dashboard pt-100px pb-100px">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-3 col-lg-3">
+                <!-- Nav tabs -->
+                <div class="dashboard_tab_button" data-aos="fade-up" data-aos-delay="0">
+                    <ul role="tablist" class="nav flex-column dashboard-list">
+                        <li><a href="/profile/" class="nav-link active">Dashboard</a></li>
+                        <li><a href="/profile_address/" class="nav-link">Addresses</a></li>
+                        <li><a href="/update_password/" class="nav-link">Change Password</a></li>
+                        
+                        <li><a href="/logout/" class="nav-link">logout</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-9 col-lg-9">
+                <form method="POST" action="/profile_update/{{request.user.id}}">
+                    {% csrf_token %}
+                <table class="table">
+                    
+                    <tbody>
+                        <h3><b>Profile</b></h3>
+                        <br>
+                      <tr>
+                        <th scope="row">First Name</th>
+                        <td><input type="text" class="form-control form-control-sm" id="fname" name="fname" placeholder="First Name" value="{{request.user.first_name}}"></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Last Name</th>
+                        <td><input type="text" class="form-control" id="lname" name="lname" placeholder="Last Name" value="{{request.user.last_name}}"></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Username</th>
+                        <td><input type="text" class="form-control" id="username" name="username" placeholder="Username" value="{{request.user.username}}"></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Email</th>
+                        <td><input type="email" class="form-control" id="email" name="email" placeholder="Email" value="{{request.user.email}}"></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Gender</th>
+                        <td> <div class="gender-options" style="display: flex; align-items: center;">
+                            <label for="male" class="radio-label">Male</label>
+                            <input type="radio" name="gender" id="male" value="male"  {% if profile.gender == 'male'%}checked{% endif %} required>
+                            <label for="female" class="radio-label">Female</label>
+                            <input type="radio" name="gender" id="female" value="female"  {% if profile.gender == 'female'%}checked{% endif %} required>
+                        </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Contact</th>
+                        <td><input type="text" name="contact" id="contact" placeholder="Mobile Number" value="{{profile.contact}}" /></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Address</th>
+                        <td><textarea id="address" name="address" placeholder="Address" required>{{profile.address}}</textarea></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Update<i class="fa fa-edit"></i></button>
+                </form>
+                
+            </div>
+        </div>
+    </div>
+</div>
+{% include "footer.html" %}

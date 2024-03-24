@@ -1,0 +1,44 @@
+
+<div class="row">
+    <div class="col">
+        <div class="tab-content mt-60px">
+            <!-- 1st tab start -->
+            <div class="tab-pane fade show active" id="newarrivals">
+                <div class="row mb-n-30px">
+
+                    {% for prod in product %}
+                    <div class="col-lg-4 col-xl-3 col-md-6 col-sm-6 col-xs-6 mb-30px">
+                        <!-- Single Prodect -->
+                        <div class="product">
+                            <span class="badges">
+                                <span class="new">New</span>
+                            </span>
+                            <div class="thumb">
+                                <a href="/Details/{{prod.id}}" class="image">
+                                    <img src="/media/{{prod.image}}" alt="Product" />
+                                    <!-- <img class="hover-image" src="/static/assets/images/product-image/1.webp" alt="Product" /> -->
+                                </a>
+                            </div>
+                            <div class="content">
+                                <span class="category"><a href="/Details/{{prod.id}}">{{prod.categories}}</a></span>
+                                <h5 class="title"><a href="/Details/{{prod.id}}">{{prod.name | truncatewords:4}}
+                                    </a>
+                                </h5>
+                                <span class="price">
+                                    <span class="new">₹{{prod.price}}</span>
+                                </span>
+                            </div>
+                            <div class="actions">
+                                <button title="Add To Cart" class="action add-to-cart" data-bs-toggle="modal" data-bs-target="#exampleModal-Cart-{{forloop.counter}}"><i
+                                    class="pe-7s-shopbag"></i></button>
+                                
+                                <button class="action quickview" data-link-action="quickview" title="Quick view" data-bs-toggle="modal" data-bs-target="#exampleModal-{{forloop.counter}}"><i class="pe-7s-look"></i></button>
+                            </div>
+                     </div>
+                  </div> 
+                  {% endfor %}
+             </div>
+         </div>
+     </div>
+ </div>
+</div>

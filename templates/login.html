@@ -1,68 +1,74 @@
-{% include "header.html" %}
-        <!-- breadcrumb-area start -->
-        <div class="breadcrumb-area">
-            <div class="container">
-                <div class="row align-items-center justify-content-center">
-                    <div class="col-12 text-center">
-                        <h2 class="breadcrumb-title">Login</h2>
-                        <!-- breadcrumb-list start -->
-                        <ul class="breadcrumb-list">
-                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                            <li class="breadcrumb-item active">Login</li>
-                        </ul>
-                        <!-- breadcrumb-list end -->
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- breadcrumb-area end -->
+
+<!DOCTYPE html>
+<html lang="zxx" dir="ltr">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appliances Heaven</title>
+    <meta name="robots" content="index, follow" />
+    <meta name="description" content="Hmart-Smart Product eCommerce html Template"> 
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="/static/assets/images/favicon.ico" />
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="/static/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/static/assets/css/font.awesome.css" />
+    <link rel="stylesheet" href="/static/assets/css/pe-icon-7-stroke.css" />
+    <link rel="stylesheet" href="/static/assets/css/animate.min.css">
+    <link rel="stylesheet" href="/static/assets/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="/static/assets/css/venobox.css">
+    <link rel="stylesheet" href="/static/assets/css/jquery-ui.min.css">
+     
+    <link rel="stylesheet" href="/static/assets/css/style.css"> 
+    <!-- Minify Version -->
+    <link rel="stylesheet" href="/static/assets/css/plugins.min.css">
+    <link rel="stylesheet" href="/static/assets/css/style.min.css">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
+
+</head>
+<body>
+    <div class="main-wrapper">
         <!-- login area start -->
         <div class="login-register-area pt-100px pb-100px">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-7 col-md-12 ml-auto mr-auto">
+                    <div class="col-lg-6 col-md-12 ml-auto mr-auto">
                         <div class="login-register-wrapper">
-                            <div class="login-register-tab-list nav">
-                                <a class="active" data-bs-toggle="tab" href="#lg1">
-                                    <h4>login</h4>
-                                </a>
-                                <a data-bs-toggle="tab" href="#lg2">
-                                    <h4>register</h4>
-                                </a>
-                            </div>
+                            <h4 style="text-align: center;">Login</h4>
                             <div class="tab-content">
                                 <div id="lg1" class="tab-pane active">
                                     <div class="login-form-container">
                                         <div class="login-register-form">
-                                            <form action="#" method="post">
-                                                <input type="text" name="user-name" placeholder="Username" />
-                                                <input type="password" name="user-password" placeholder="Password" />
+                                            <form action="/login_check/" method="post">
+                                                {% csrf_token %}
+                                                <input type="text" name="username" id="username" placeholder="Username" />
+                                                <input type="password" name="password" id="password" placeholder="Password" />
                                                 <div class="button-box">
                                                     <div class="login-toggle-btn">
                                                         <input type="checkbox" />
                                                         <a class="flote-none" href="javascript:void(0)">Remember me</a>
-                                                        <a href="#">Forgot Password?</a>
+                                                        <a href="/password_reset/">Forgot Password?</a>
                                                     </div>
-                                                    <button type="submit"><span>Login</span></button>
+                                                    <button type="submit"><span>Login</span></button><br><br>
+                                                    <h6 style="text-align: center;">Don't have an account?<a href="/registration/">Registration</a> </h6>
                                                 </div>
+                                                {% if messages %}
+                                                <ul class="messages">
+                                                    {% for message in messages %}
+                                                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                                                    {% endfor %}
+                                                </ul>
+                                                {% endif %}
                                             </form>
                                         </div>
                                     </div>
                                 </div>
-                                <div id="lg2" class="tab-pane">
-                                    <div class="login-form-container">
-                                        <div class="login-register-form">
-                                            <form action="#" method="post">
-                                                <input type="text" name="user-name" placeholder="Username" />
-                                                <input type="password" name="user-password" placeholder="Password" />
-                                                <input name="user-email" placeholder="Email" type="email" />
-                                                <div class="button-box">
-                                                    <button type="submit"><span>Register</span></button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
+                               
                             </div>
                         </div>
                     </div>
@@ -70,4 +76,31 @@
             </div>
         </div>
         <!-- login area end -->
-        {% include "footer.html" %}
+      
+    </div>
+    
+    <script src="/static/assets/js/vendor/bootstrap.bundle.min.js"></script>
+    <script src="/static/assets/js/vendor/jquery-3.6.0.min.js"></script>
+    <script src="/static/assets/js/vendor/jquery-migrate-3.3.2.min.js"></script>
+    <script src="/static/assets/js/vendor/modernizr-3.11.2.min.js"></script>
+    <script src="/static/assets/js/plugins/jquery.countdown.min.js"></script>
+    <script src="/static/assets/js/plugins/swiper-bundle.min.js"></script>
+    <script src="/static/assets/js/plugins/scrollUp.js"></script>
+    <script src="/static/assets/js/plugins/venobox.min.js"></script>
+    <script src="/static/assets/js/plugins/jquery-ui.min.js"></script>
+    <script src="/static/assets/js/plugins/mailchimp-ajax.js"></script> 
+
+    <!-- Minify Version -->
+    <script src="/static/assets/js/vendor.min.js"></script>
+    <script src="/static/assets/js/plugins.min.js"></script>
+    <script src="/static/assets/js/main.min.js"></script>
+
+  
+    <script src="/static/assets/js/main.js"></script> 
+</body>
+
+
+<!-- Mirrored from template.hasthemes.com/hmart/hmart/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 15 Sep 2021 18:03:57 GMT -->
+</html>
+    <!-- Global Vendor, plugins JS -->
+    

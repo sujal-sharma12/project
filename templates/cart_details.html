@@ -1,0 +1,92 @@
+
+{% load cart_tag %}
+{% include "header.html" %}
+        <!-- breadcrumb-area start -->
+       
+        <!-- breadcrumb-area end -->
+        <!-- Cart Area Start -->
+        <div class="cart-main-area pt-100px pb-100px">
+            <div class="container">
+                <h3 class="cart-page-title">Your cart items</h3>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                        <form action="#">
+                            <div class="table-content table-responsive cart-table-content">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Image</th>
+                                            <th>Product Name</th>
+                                            <th>Until Price</th>
+                                            <th>Qty</th>
+                                            <th>Subtotal</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for key, value in request.session.cart.items %}
+                                        <tr>
+                                            <td class="product-thumbnail">
+                                                <a href="#"><img class="img-responsive ml-15px" src="{{ value.image }}" alt="" /></a>
+                                            </td>
+                                            <td class="product-name"><a href="#">{{ value.name | truncatewords:5 }}</a></td>
+                                            <td class="product-price-cart"><span class="amount"> ₹{{ value.price }}</span></td>
+                                            <td class="cart_quantity">
+                                                <div class="cart_quantity_button">
+                                                    <a class="cart_quantity_up" href="{% url 'item_increment' value.product_id %}"> + </a>
+                                                    <input class="cart-plus-minus-box" type="text" name="qtybutton" value="{{ value.quantity }}" min="1" readonly />
+                                                    <a href="{% url 'item_decrement' value.product_id %}" class="cart_quantity_up">-</a>
+                                                </div>
+                                            </td>
+                                            <td class="product-subtotal">{{ value.price|multiply:value.quantity }}
+
+                                            </td>
+                                            <td class="product-remove">
+                                                <a href="#"><i class="fa fa-pencil"></i></a>
+                                                <a href="{% url 'item_clear' key %}"><i class="fa fa-times"></i></a>
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                       
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="cart-shiping-update-wrapper">
+                                        <div class="cart-shiping-update">
+                                            <a href="{% url 'HomePage' %}">Continue Shopping</a>
+                                        </div>
+                                        <div class="cart-clear">
+                                            <button>Update Shopping Cart</button>
+                                            <a href="{% url 'cart_clear' %}">Clear Shopping Cart</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 mt-md-30px">
+                                <div class="grand-totall">
+                                    <div class="title-wrap">
+                                        <h4 class="cart-bottom-title section-bg-gary-cart">Cart Total</h4>
+                                    </div>
+                                    <h5>Total products <span>₹ {{cart_total_amount}}</span></h5>
+                                    <div class="total-shipping">
+                                        <h5>Total shipping Charges</h5>
+                                        <ul>
+                                            <li><input type="checkbox" /> GST <span>₹320</span></li>
+                                            <li><input type="checkbox" /> Delivery <span>₹80.00</span></li>
+                                        </ul>
+                                    </div>
+                                    <h4 class="grand-totall-title">Grand Total <span>₹ {{cart_total_amount|add:400.00}} .00</span></h4>
+                                    <a href="{% url 'ChekoutPage' %}">Proceed to Checkout</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Cart Area End -->
+        {% include "footer.html" %}

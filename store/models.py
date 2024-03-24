@@ -1,7 +1,7 @@
 from django.db import models
 from  django.utils import timezone
 import datetime
-
+from django.contrib.auth.models import User
 # Create your models here.
 class Categories(models.Model):
     name = models.CharField(max_length=200)
@@ -54,3 +54,56 @@ class Product(models.Model):
 class images(models.Model):
     image=models.ImageField(upload_to='news/')        
     product=models.ForeignKey(Product, on_delete=models.CASCADE,default=1)
+
+
+class Profile(models.Model):
+    gender=models.CharField(max_length=15)
+    contact = models.BigIntegerField()
+    address = models.TextField()
+    user = models.OneToOneField(User,on_delete=models.CASCADE)
+    
+    class Meta:
+        db_table = 'profile'
+
+class contact_us(models.Model):
+    name=models.CharField(max_length=100)
+    email=models.EmailField(max_length=100)
+    subject=models.CharField(max_length=200)
+    message=models.TextField()    
+    date=models.DateTimeField(auto_now_add=True)
+
+    
+
+    def __str__(self):
+        return self.email
+
+class Order(models.Model):
+    user=models.ForeignKey(User,on_delete=models.CASCADE)
+    profile=models.ForeignKey(Profile,on_delete=models.CASCADE)
+    firstname=models.CharField(max_length=100)
+    lastname=models.CharField(max_length=100)
+    state=models.CharField(max_length=100)
+    address=models.TextField()
+    city=models.CharField(max_length=100)
+    firstname=models.CharField(max_length=100)
+    pincode=models.IntegerField()
+    phone=models.BigIntegerField()
+    email=models.EmailField(max_length=100)
+    amount=models.CharField(max_length=100,default='0')
+    payment_id=models.CharField(max_length=300,null=True,blank=True)
+    paid=models.BooleanField(default=False,null=True)
+    date=models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return self.user.username
+
+class Orderitem(models.Model):
+    order=models.ForeignKey(Order,on_delete=models.CASCADE)
+    product=models.CharField(max_length=200)
+    firstname=models.CharField(max_length=100)
+    image=models.ImageField(upload_to='media/order_img')
+    quantity=models.CharField(max_length=20)
+    total=models.CharField(max_length=1000)
+
+    def __str__(self):
+        return self.order.user.username 

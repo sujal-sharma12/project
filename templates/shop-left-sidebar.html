@@ -7,7 +7,7 @@
                     <div class="col-lg-9 order-lg-last col-md-12 order-md-first">
                         <!-- Shop Top Area Start -->
                         <div class="shop-top-bar d-flex">
-                            <p class="compare-product"> <span>12</span> Product Found of <span>30</span></p>
+                            <!-- <p class="compare-product"> <span>12</span> Product Found of <span>30</span></p> -->
                             <!-- Left Side End -->
                             <div class="shop-tab nav">
                                 <button class="active" data-bs-target="#shop-grid" data-bs-toggle="tab">
@@ -38,14 +38,14 @@
                                                         <span class="new">New</span>
                                                         </span>
                                                         <div class="thumb">
-                                                            <a href="single-product.html" class="image">
-                                                                <img src="/media/{{prod.image}}" alt="Product" />
+                                                            <a href="/Details/{{prod.id}}" class="image">
+                                                                <img src="/media/{{prod.image}}" alt="Product" height="100%" />
                                                                 <!-- <img class="hover-image" src="/static/assets/images/product-image/1.webp" alt="Product" /> -->
                                                             </a>
                                                         </div>
                                                         <div class="content">
-                                                            <span class="category"><a href="#">{{prod.categories}}</a></span>
-                                                            <h5 class="title"><a href="single-product.html">{{prod.name | truncatewords:6}}
+                                                            <span class="category"><a href="#">All{{prod.categories}}</a></span>
+                                                            <h5 class="title"><a href="/Details/{{prod.id}}">{{prod.name | truncatewords:6}}
                                                                 </a>
                                                             </h5>
                                                             <span class="price">
@@ -73,7 +73,7 @@
                                                     <div class="col-md-5 col-lg-5 col-xl-4 mb-lm-30px">
                                                         <div class="product">
                                                             <div class="thumb">
-                                                                <a href="single-product.html" class="image">
+                                                                <a href="/Details/{{prod.id}}" class="image">
                                                                     <img src="/media/{{prod.image}}" alt="Product" />
                                                                     <!-- <img class="hover-image" src="/static/assets/images/product-image/1.webp" alt="Product" /> -->
                                                                 </a>
@@ -87,7 +87,7 @@
                                                         <div class="content-desc-wrap">
                                                             <div class="content">
                                                                 <span class="category"><a href="#">{{prod.categories}}</a></span>
-                                                                <h5 class="title"><a href="single-product.html">{{prod.name | truncatewords:8}}</a></h5>
+                                                                <h5 class="title"><a href="/Details/{{prod.id}}">{{prod.name | truncatewords:8}}</a></h5>
                                                                 <p>{{prod.description |  truncatewords:32}} </p>
                                                             </div>
                                                             <div class="box-inner">
@@ -97,11 +97,9 @@
                                                                 <div class="actions">
                                                                     <button title="Add To Cart" class="action add-to-cart" data-bs-toggle="modal" data-bs-target="#exampleModal-Cart"><i
                                                                         class="pe-7s-shopbag"></i></button>
-                                                                    <button class="action wishlist" title="Wishlist" data-bs-toggle="modal" data-bs-target="#exampleModal-Wishlist"><i
-                                                                            class="pe-7s-like"></i></button>
+                                                                    
                                                                     <button class="action quickview" data-link-action="quickview" title="Quick view" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="pe-7s-look"></i></button>
-                                                                    <button class="action compare" title="Compare" data-bs-toggle="modal" data-bs-target="#exampleModal-Compare"><i
-                                                                            class="pe-7s-refresh-2"></i></button>
+                                                                   
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -116,7 +114,7 @@
                             </div>
                             <!-- Tab Content Area End -->
                             <!--  Pagination Area Start -->
-                            <div class="pro-pagination-style text-center text-lg-end" data-aos="fade-up" data-aos-delay="200">
+                            <!-- <div class="pro-pagination-style text-center text-lg-end" data-aos="fade-up" data-aos-delay="200">
                                 <div class="pages">
                                     <ul>
                                         <li class="li"><a class="page-link" href="#"><i class="fa fa-angle-left"></i></a>
@@ -128,7 +126,7 @@
                                         </li>
                                     </ul>
                                 </div>
-                            </div>
+                            </div> -->
                             <!--  Pagination Area End -->
                         </div>
                         <!-- Shop Bottom Area End -->

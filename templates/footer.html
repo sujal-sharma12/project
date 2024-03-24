@@ -182,18 +182,12 @@
                                         </li>
                                     </ul>
                                 </div>
-                              
                                 <div class="pro-details-quality">
-                                    <div class="cart-plus-minus">
-                                        <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1" />
-                                    </div>
+                                   
                                     <div class="pro-details-cart">
-                                        <button class="add-cart"> Add To
-                                            Cart</button>
+                                        <a href="{% url 'cart_add' i.id %}" class="add-cart">Add To Cart</a>
                                     </div>
-                                    <div class="pro-details-compare-wishlist pro-details-wishlist ">
-                                        <a href="wishlist.html"><i class="pe-7s-like"></i></a>
-                                    </div>
+                                   
                                 </div>
                                 <div class="payment-img">
                                     <a href="#"><img src="/static/assets/images/icons/payment.png" alt=""></a>
@@ -215,14 +209,16 @@
             <div class="modal-content">
                 <div class="modal-body text-center">
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="pe-7s-close"></i></button>
-                    <div class="tt-modal-messages">
+                    <!-- <div class="tt-modal-messages">
                         <i class="pe-7s-check"></i> Added to cart successfully!
-                    </div>
+                    </div> -->
                     <div class="tt-modal-product">
                         <div class="tt-img">
                             <img src="/media/{{cart.image}}" alt="Modern Smart Phone">
                         </div>
-                        <h2 class="tt-title"><a href="#">{{cart.name}}</a></h2>
+                        <h2 class="tt-title"><a href="">{{cart.name}}</a></h2>
+                        <br>
+                        <a href="{% url 'cart_add' cart.id %}">Add To Cart</a>
                     </div>
                 </div>
             </div>
