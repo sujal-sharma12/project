@@ -122,48 +122,15 @@
                                     <div class="your-order-total">
                                         <ul>
                                             <li class="order-total">Total</li>
-                                            <li>₹ {{cart_total_amount}}</li>
+                                            <li><input value="{{cart_total_amount}}" name="amount"> </li>
                                         </ul>
                                     </div>
                                 </div>
                                 <div class="payment-method">
-                                    <div class="payment-accordion element-mrg">
-                                        <div id="faq" class="panel-group">
-                                            <div class="panel panel-default single-my-account m-0">
-                                                <div class="panel-heading my-account-title">
-                                                    <h4 class="panel-title"><a data-bs-toggle="collapse" href="#my-account-1" class="collapsed" aria-expanded="true">Direct bank transfer</a>
-                                                    </h4>
-                                                </div>
-                                                <div id="my-account-1" class="panel-collapse collapse show" data-bs-parent="#faq">
-                                                    <div class="panel-body">
-                                                        <p>Please send a check to Store Name, Store Street, Store Town,
-                                                            Store State / County, Store Postcode.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="panel panel-default single-my-account m-0">
-                                                <div class="panel-heading my-account-title">
-                                                    <h4 class="panel-title"><a data-bs-toggle="collapse" href="#my-account-2" aria-expanded="false" class="collapsed">Check payments</a></h4>
-                                                </div>
-                                                <div id="my-account-2" class="panel-collapse collapse" data-bs-parent="#faq">
-                                                    <div class="panel-body">
-                                                        <p>Please send a check to Store Name, Store Street, Store Town,
-                                                            Store State / County, Store Postcode.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="panel panel-default single-my-account m-0">
-                                                <div class="panel-heading my-account-title">
-                                                    <h4 class="panel-title"><a data-bs-toggle="collapse" href="#my-account-3">Cash on delivery</a></h4>
-                                                </div>
-                                                <div id="my-account-3" class="panel-collapse collapse" data-bs-parent="#faq">
-                                                    <div class="panel-body">
-                                                        <p>Please send a check to Store Name, Store Street, Store Town,
-                                                            Store State / County, Store Postcode.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    <h3>Payment Method</h3><br>
+                                    <div class="login-mail">
+                                      <input type="radio" name="payment" id="py1" value="Online Payment"> Online Payment<br>
+                                      <input type="radio" name="payment" id="py2" value=" Cash On Delivery"> Cash On Delivery
                                     </div>
                                 </div>
                             </div>

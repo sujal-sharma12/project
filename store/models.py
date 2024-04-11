@@ -79,7 +79,6 @@ class contact_us(models.Model):
 
 class Order(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE)
-    profile=models.ForeignKey(Profile,on_delete=models.CASCADE)
     firstname=models.CharField(max_length=100)
     lastname=models.CharField(max_length=100)
     state=models.CharField(max_length=100)
@@ -92,7 +91,8 @@ class Order(models.Model):
     amount=models.CharField(max_length=100,default='0')
     payment_id=models.CharField(max_length=300,null=True,blank=True)
     paid=models.BooleanField(default=False,null=True)
-    date=models.DateField(auto_now_add=True)
+    dateofbirth=models.DateField(auto_now_add=True)
+    payment_method = models.CharField(max_length=100,default='0')
 
     def __str__(self):
         return self.user.username
@@ -100,7 +100,7 @@ class Order(models.Model):
 class Orderitem(models.Model):
     order=models.ForeignKey(Order,on_delete=models.CASCADE)
     product=models.CharField(max_length=200)
-    firstname=models.CharField(max_length=100)
+    price=models.CharField(max_length=100)
     image=models.ImageField(upload_to='media/order_img')
     quantity=models.CharField(max_length=20)
     total=models.CharField(max_length=1000)

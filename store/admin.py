@@ -25,6 +25,7 @@ class OrderitemTubleinline(admin.TabularInline):
 
 class OrderAdmin(admin.ModelAdmin):
     inlines = [OrderitemTubleinline]
+    list_display=('firstname','phone','email','dateofbirth')
 
 
 

@@ -1,0 +1,83 @@
+{% include "header.html" %}
+<!-- breadcrumb-area start -->
+<!-- <div class="breadcrumb-area">
+    <div class="container">
+        <div class="row align-items-center justify-content-center">
+            <div class="col-12 text-center">
+                <h2 class="breadcrumb-title">My Profile</h2>
+                breadcrumb-list start -->
+                <!-- <ul class="breadcrumb-list">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item active">Account</li>
+                </ul> -->
+                <!-- breadcrumb-list end -->
+            <!-- </div>
+        </div>
+    </div>
+</div> -->
+<!-- breadcrumb-area end -->
+<!-- account area start -->
+<div class="account-dashboard pt-100px pb-100px">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-3 col-lg-3">
+                <!-- Nav tabs -->
+                <div class="dashboard_tab_button" data-aos="fade-up" data-aos-delay="0">
+                    <ul role="tablist" class="nav flex-column dashboard-list">
+                        <li><a href="/profile/"  class="nav-link active">Dashboard</a></li>
+                        <li><a href="/profile_address/"  class="nav-link">Addresses</a></li>
+                        <li><a href="/orderhistory/" class="nav-link">Order History</a></li>
+                        <li><a href="/update_password/" class="nav-link">Change Password</a></li>
+                        
+                        <li><a href="/logout/" class="nav-link">logout</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-9 col-lg-9">
+                <div class="tab-content dashboard_content" data-aos="fade-up" data-aos-delay="200">
+                    <div class="tab-pane fade show active" id="dashboard">
+                        <h4>Your Orders</h4>
+                       
+                    </div>
+                    <div class="container" style="margin-top: 50px;margin-bottom: 50px;">
+                        <div class="bs-example" data-example-id="contextual-table" style="border: 1px solid #eee">
+                           <table class="table">
+                             <thead>
+                               <tr>
+                                 <th class="border-0">No</th>
+                                 <th class="border-0">Date</th>
+                                 <th class="border-0">Price</th>
+                                 <th class="border-0">Payment Method</th>
+                                 <th class="border-0">View</th>
+                               </tr>
+                             </thead>
+                             <tbody>
+                               <tr class="info">
+                                 {% for row in order %}
+                                   <th scope="row">{{ forloop.counter }}</th>
+                                   <td>{{row.dateofbirth}}</td> 
+                                   <td>{{row.amount}}</td>
+                                   <td>{{row.payment_method}}</td> 
+                                   <td><a href="/orderview/{{row.id}}">View</a> </td> 
+                               </tr> 
+                                 {% endfor %} 
+                             </tbody>
+                           </table>
+                           {% if messages %}
+                                 <ul class="messages">
+                                     {% for message in messages %}
+                                     <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                                     {% endfor %}
+                                 </ul>
+                                 {% endif %}
+                       </div>
+                       </div>
+                       
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+<!-- account area start -->
+{% include "footer.html" %}

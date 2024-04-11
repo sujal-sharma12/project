@@ -1,0 +1,43 @@
+{% include "header.html" %}
+ 
+        <!-- Contact Area Start -->
+        <div class="contact-area">
+            <div class="container">
+                <div class="contact-wrapper">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="contact-form">
+                                <div class="contact-title mb-30">
+                                    <h2 class="title"></h2>
+                                </div>
+                                <form class="text-center border border-light p-5" action="/success/" method="POST">
+                                    {% csrf_token %}
+                            
+                                    <!-- RAZORPAY INTEGRATION HERE -->
+                                    <script src="https://checkout.razorpay.com/v1/checkout.js" 
+                                    data-key="rzp_test_PvM4GxK9MYlCUc" 
+                                    data-amount="{{payment.amount}}"
+                                    data-currency="INR" 
+                                    data-order_id="{{payment.id}}" 
+                                    data-buttontext="Pay with Razorpay"
+                                    data-name="Appliances Heaven"
+                                    data-description="Complete online Solution"
+                                    data-image="https://oibp1.000webhostapp.com/logo.PNG" 
+                                    data-prefill.name="{{request.user.first_name}}"
+                                    data-prefill.email="{{request.user.email}}" 
+                                    data-theme.color="#F37254"></script>
+                                </form>
+
+                                <p class="form-messege"></p>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Contact Area End -->
+        <!-- map Area Start -->
+       
+        <!-- map Area End -->
+        {% include "footer.html" %}

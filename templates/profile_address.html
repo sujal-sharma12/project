@@ -26,6 +26,7 @@
                             <ul role="tablist" class="nav flex-column dashboard-list">
                                 <li><a href="/profile/"  class="nav-link active">Dashboard</a></li>
                                 <li><a href="/profile_address/"  class="nav-link">Addresses</a></li>
+                                <li><a href="/orderhistory/" class="nav-link">Order History</a></li>
                                 <li><a href="/update_password/" class="nav-link">Change Password</a></li>
                                 
                                 <li><a href="/logout/" class="nav-link">logout</a></li>
@@ -36,7 +37,7 @@
                         <div class="tab-pane" id="address">
                             <p>The following addresses will be used on the checkout page by default.</p>
                             <h5 class="billing-address">Billing address</h5>
-                            <a href="/profile_edit/" class="view">Edit</a>
+                            <a href="/profile_edit/{{request.user.id}}" class="view">Edit</a>
                             <p class="mb-2"><strong>{{profile.address}}</strong></p>
                         </div>
                         
