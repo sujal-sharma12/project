@@ -34,7 +34,7 @@
                                             <td class="cart_quantity">
                                                 <div class="cart_quantity_button">
                                                     <a class="cart_quantity_up" href="{% url 'item_increment' value.product_id %}"> + </a>
-                                                    <input class="cart-plus-minus-box" type="text" name="qtybutton" value="{{ value.quantity }}" min="1" style="text-align: center;" readonly />
+                                                    <input class="cart-plus-minus-box" type="text" name="qtybutton" value="{{ value.quantity }}" min="1" style="text-align: center;" />
                                                     <a href="{% url 'item_decrement' value.product_id %}" class="cart_quantity_up">-</a>
                                                 </div>
                                             </td>

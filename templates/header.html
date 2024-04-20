@@ -54,7 +54,9 @@
                             <div class="top-nav">
                                 <ul>
                                     <li><a href="tel:0123456789"><i class="fa fa-phone"></i> +012 3456 789</a></li>
-                                    <li><a href="mailto:demo@example.com"><i class="fa fa-envelope-o"></i> demo@example.com</a></li>
+                                    <li><a href="mailto:demo@example.com"><i class="fa fa-envelope-o"></i>
+                                        appliancesheaven@gmail.com
+                                    </a></li>
                                     <li><a href="/profile/"><i class="fa fa-user"></i> My Profile</a></li>
                                     {% if user.is_authenticated %}
                                     <li><a href="/logout/"><i class="fa fa-user"></i>Logout</a></li>
@@ -80,8 +82,8 @@
                         </div>
                         <div class="col-lg-6 d-none d-lg-block">
                             <div class="search-element">
-                                <form action="#">
-                                    <input type="text" placeholder="Search" />
+                                <form action="{%url 'search' %}" method="get">
+                                    <input type="text" placeholder="Search" name="query" id="query" />
                                     <button><i class="pe-7s-search"></i></button>
                                 </form>
                             </div>
@@ -164,7 +166,7 @@
                                         <li class="dropdown position-static"><a href="">Kitchen appplinces
                                                 <i class="fa fa-angle-right"></i></a>
                                             <ul class="sub-menu sub-menu-2">
-                                                <li><a href="{% url 'Productpage' %}?categories=1">Refrigetor</a></li>
+                                                <li><a href="{% url 'Productpage' %}?categories=1">Grinder</a></li>
                                                 <li><a href="{% url 'Productpage' %}?categories=1">Microwave Ovens </a>
                                                 </li>
                                                 <li><a href="{% url 'Productpage' %}?categories=1"> Coffee Makers</a>
@@ -237,11 +239,9 @@
                 <div class="container">
                     <!-- mobile search start -->
                     <div class="search-element max-width-100">
-                        <form action="/search/" method="get">
-                            {% csrf_token %}
-                            <input type="text" placeholder="Search" name="query" id="query">
-                            <button type="submit"><i class="pe-7s-search"></i></button>
-
+                        <form action="{%url 'search' %}" method="get">
+                            <input type="text" placeholder="Search" name="query" id="query" />
+                            <button><i class="pe-7s-search"></i></button>
                         </form>
                     </div>
                     <!-- mobile search start -->

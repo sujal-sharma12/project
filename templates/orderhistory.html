@@ -17,6 +17,18 @@
 </div> -->
 <!-- breadcrumb-area end -->
 <!-- account area start -->
+<style>
+    .invoice-btn{
+        color: rgb(35, 101, 215);
+        border:1px solid rgb(35, 101, 215);
+        border-radius: 10px;
+        padding: 10px;
+    }
+    .invoice-btn:hover{
+        color:#eee;
+        background-color: rgb(35, 101, 215);
+    }
+</style>
 <div class="account-dashboard pt-100px pb-100px">
     <div class="container">
         <div class="row">
@@ -44,11 +56,12 @@
                            <table class="table">
                              <thead>
                                <tr>
-                                 <th class="border-0">No</th>
+                                 <th class="border-0">No.</th>
                                  <th class="border-0">Date</th>
                                  <th class="border-0">Price</th>
                                  <th class="border-0">Payment Method</th>
                                  <th class="border-0">View</th>
+                                 <th class="border-0">Download Invoice</th>
                                </tr>
                              </thead>
                              <tbody>
@@ -59,6 +72,13 @@
                                    <td>{{row.amount}}</td>
                                    <td>{{row.payment_method}}</td> 
                                    <td><a href="/orderview/{{row.id}}">View</a> </td> 
+                                   <td>
+                                    <form action="/invoice_page/" method="post">
+                                        {% csrf_token %}
+                                        <input type="number" value="{{row.id}}" hidden name="o_id">
+                                        <button type="submit" class="invoice-btn">Download Invoice</button>
+                                    </form>
+                                   </td>
                                </tr> 
                                  {% endfor %} 
                              </tbody>

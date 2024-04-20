@@ -10,7 +10,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 
 def Main(request):
-     product = Product.objects.filter(status='PUBLISH')
+     product = Product.objects.filter(status='PUBLISH')[:8]
      context ={
          'product': product,
          }
@@ -18,6 +18,15 @@ def Main(request):
 
 def LoginPage(request):
     return render(request,'login.html')
+
+def invoice_page(request):
+    o_id=request.POST['o_id']
+    order_obj=Order.objects.get(id=o_id)
+    order_item=Orderitem.objects.filter(order_id=order_obj)
+    customer_id = request.user.id
+    customer_obj=User.objects.get(id=customer_id)
+    profile_obj=Profile.objects.get(user_id=customer_obj)
+    return render(request,"invoice.html",{'customer_obj':customer_obj,'profile_obj':profile_obj,'order_obj':order_obj,'order_item':order_item})
 
 def CartPage(request):
     return render(request,'cart.html')
@@ -129,8 +138,10 @@ def PRODUCT(request):
 
 def DetailsPage(request,id):
     prod=Product.objects.filter(id = id ).first()
+    related = Product.objects.filter(categories=prod.categories).exclude(id=id)[:4]
     context={
          'prod': prod,
+         'related': related,
     }
     return render(request,'single-product.html',context)
 
@@ -261,12 +272,20 @@ def payment_process(request):
 
 @csrf_exempt
 def success(request):
+    order = Order.objects.filter(user=request.user)
+    latest_order = order.latest('id') 
+    online_payment_done = True  
+    latest_order.paid = online_payment_done
+    latest_order.save()
     context = {}
     return render(request,'payment_success.html',context)
 
 def search(request):
     query=request.GET.get('query')
-    context = {}
+    product = Product.objects.filter(name__icontains = query)
+    context = {
+        'product': product
+    }
     return render(request,'search.html',context)
 
 def update_password(request):
